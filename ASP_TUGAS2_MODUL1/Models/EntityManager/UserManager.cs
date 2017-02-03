@@ -59,5 +59,38 @@ namespace ASP_TUGAS2_MODUL1.Models.EntityManager
                 return db.SYSUSER.Any(o => o.LoginName.Equals(loginName));
             }
         }
+
+        public string GetUserPassword(string loginName)
+        {
+            using (DemoDBEntities db = new DemoDBEntities())
+            {
+                var user = db.SYSUSER.Where(o => o.LoginName.ToLower().Equals(loginName));
+                if (user.Any())
+                    return user.FirstOrDefault().PasswordEncryptedText;
+                else
+                    return string.Empty;
+            }
+        }
+
+        public bool IsUserInRole(string loginName, string roleName)
+        {
+            using (DemoDBEntities db = new DemoDBEntities())
+            {
+                SYSUSER SU = db.SYSUSER.FirstOrDefault(o => o.LoginName.ToLower().Equals(loginName));
+                if (SU != null)
+                {
+                    var roles = from q in db.SYSUserRole
+                        join r in db.LOOKUPRole on q.LOOKUPRoleID equals r.LOOKUPRoleID
+                        where r.RoleName.Equals(roleName) && q.SYSUserID.Equals(SU.SYSUserID)
+                        select r.RoleName;
+
+                    if (roles != null)
+                    {
+                        return roles.Any();
+                    }
+                }
+                return false;
+            }
+        }
     }
 }

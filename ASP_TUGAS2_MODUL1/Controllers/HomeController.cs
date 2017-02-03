@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using ASP_TUGAS2_MODUL1.Security;
 
 namespace ASP_TUGAS2_MODUL1.Controllers
 {
@@ -12,6 +13,17 @@ namespace ASP_TUGAS2_MODUL1.Controllers
 
         [Authorize]
         public ActionResult Welcome()
+        {
+            return View();
+        }
+
+        [AuthorizeRoles("Admin")]
+        public ActionResult AdminOnly()
+        {
+            return View();
+        }
+
+        public ActionResult UnAuthorized()
         {
             return View();
         }

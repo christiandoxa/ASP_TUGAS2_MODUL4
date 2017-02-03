@@ -28,4 +28,19 @@ namespace ASP_TUGAS2_MODUL1.Models.ViewModel
 
         public string Gender { set; get; }
     }
+
+    public class UserLoginView
+    {
+        [Key]
+        public int SYSUserID { get; set; }
+
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "ID")]
+        public string LoginName { get; set; }
+
+        [Required(ErrorMessage = "*")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { set; get; }
+    }
 }

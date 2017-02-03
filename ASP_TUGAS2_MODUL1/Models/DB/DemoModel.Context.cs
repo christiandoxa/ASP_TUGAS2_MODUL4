@@ -31,5 +31,7 @@ namespace ASP_TUGAS2_MODUL1.Models.DB
         public virtual DbSet<SYSUserRole> SYSUserRole { get; set; }
 
         public System.Data.Entity.DbSet<ASP_TUGAS2_MODUL1.Models.ViewModel.UserSignUpView> UserSignUpViews { get; set; }
+
+        public System.Data.Entity.DbSet<ASP_TUGAS2_MODUL1.Models.ViewModel.UserLoginView> UserLoginViews { get; set; }
     }
 }
