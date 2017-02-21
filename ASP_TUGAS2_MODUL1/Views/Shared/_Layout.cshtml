@@ -6,39 +6,49 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
-    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
-    <link href="~/Content/themes/base/all.css" rel="stylesheet"/>
+    <script src="~/scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <link href="~/Content/themes/base/all.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" datatarget=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" },new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">@Html.ActionLink("Home", "Index", "Home")</li>
+                <!-- DropDown example -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="dropdownCommonMenu" data-toggle="dropdown">DropDown</a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCommonMenu">
+                        <li role="menuitem" class="navbar-header">Header 1</li>
+                        <li role="menuitem">@Html.ActionLink("Item 1", "Index", "Home")</li>
+                        <li role="menuitem" class="disabled">@Html.ActionLink("Item 2 (disabled)","Index","Home")</li>
+                        <li role="menuitem" class="divider"></li>
+                        <li role="menuitem" class="navbar-header">Header 2</li>
+                        <li role="menuitem">@Html.ActionLink("Item 3", "Index", "Home")</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-
-    <script src="~/Scripts/bootstrap.min.js"></script>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
 </body>
 </html>
+
+<script src="~/scripts/bootstrap.min.js"></script>
